@@ -10,7 +10,10 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native'
-import { ArchiveBoxIcon } from 'react-native-heroicons/outline'
+import {
+	ArchiveBoxIcon,
+	ChevronRightIcon,
+} from 'react-native-heroicons/outline'
 import {
 	heightPercentageToDP as hp,
 	widthPercentageToDP as wp,
@@ -55,11 +58,24 @@ export default function FavoritesScreens() {
 
 const Empty = ({ navigation }: any) => {
 	return (
-		<View>
-			<Text>It's empty here</Text>
-			<ArchiveBoxIcon />
-			<TouchableOpacity onPress={() => navigation.goBack()}>
-				<Text>Сome back</Text>
+		<View
+			style={{
+				width: wp(100),
+				height: hp(100),
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				gap: wp(2),
+			}}
+		>
+			<Text style={styles.emptyTitle}>It's empty here</Text>
+			<ArchiveBoxIcon size={wp(10)} color='#f87171' />
+			<TouchableOpacity
+				style={styles.button}
+				onPress={() => navigation.goBack()}
+			>
+				<Text style={{ color: 'white', fontWeight: 'bold' }}>Сome back </Text>
+				<ChevronRightIcon size={wp(7)} strokeWidth={3} color='white' />
 			</TouchableOpacity>
 		</View>
 	)
@@ -70,5 +86,18 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: '#6c757d',
 		fontSize: wp(7),
+	},
+	emptyTitle: {
+		fontWeight: 'bold',
+		color: '#f87171',
+		fontSize: wp(10),
+	},
+	button: {
+		display: 'flex',
+		alignItems: 'center',
+		flexDirection: 'row',
+		borderRadius: 100,
+		backgroundColor: '#f97316',
+		padding: 12,
 	},
 })
